@@ -1,7 +1,7 @@
 {
   "name": "johnkot-swap",
   "version": "0.1.0",
-  "description": "An Ethereum Marketplace",
+  "description": "An Instant Crypto Swap",
   "author": "JohnKot",
   "dependencies": {
     "babel-polyfill": "6.26.0",
