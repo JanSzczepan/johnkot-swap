@@ -1,0 +1,16 @@
+.navbar-toggler {
+   outline: none !important;
+   box-shadow: none !important;
+   border: none !important;
+}
+
+.main-nav {
+   background-color: #302F32 !important;
+}
+
+.indenticon-container {
+   display: flex;
+   align-items: center;
+   flex-wrap: nowrap;
+   text-align: right;
+}

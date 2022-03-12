@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 import Token from '../abis/Token.json'
 import EthSwap from '../abis/EthSwap.json'
 
-import './App.css'
+import './App.css' 
 import Main from './Main'
 
 class App extends Component {
@@ -93,8 +93,8 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <Navbar accounts={this.state.accounts}/>
+      <div className='app-container d-flex justify-content-center align-items-center'>
+        {/* <Navbar accounts={this.state.accounts}/>
         <div className="container-fluid mt-5">
           <div className="row py-5">
             <main role="main" className="col-lg-12 d-flex text-center">
@@ -103,8 +103,17 @@ class App extends Component {
               </div>
             </main>
           </div>
-        </div>
+        </div> */}
+        <div className="main-card card">
+          <div className="card-header p-0">
+            <Navbar accounts={this.state.accounts}/>
+          </div>
+          <div className="main-container card-body px-4 px-sm-5 py-5">
+            <Main />
+          </div>
+        </div>        
       </div>
+      
     );
   }
 }
