@@ -48,7 +48,7 @@ class App extends Component {
     this.setState({ ethBalance: window.web3.utils.fromWei(ethBalance, 'Ether') })
 
     // console.log(this.state.accounts)
-    console.log(ethBalance)
+    // console.log(ethBalance)
 
     const networkId =  await web3.eth.net.getId()
 
