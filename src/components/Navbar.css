@@ -6,6 +6,7 @@
 
 .main-nav {
    background-color: #302F32 !important;
+   min-height: 64px;
 }
 
 .indenticon-container {
@@ -13,4 +14,10 @@
    align-items: center;
    flex-wrap: nowrap;
    text-align: right;
+}
+
+@media(min-width: 576px) {
+   .main-nav {
+      border-radius: 15px 15px 0 0;
+   }
 }

@@ -1,22 +1,172 @@
 body {
    /* height: 100vh; */
-   overflow-x: hidden;
+   overflow: hidden;
 }
 
 .app-container {
-   margin: -1px;
+   /* margin: -1px; */
    height: 100vh;
+   background-color: #5D636A;
 }
 
 .main-card {
    width: 100%;
    height: 100%;
    display: flex;
+   margin: -1px;
+}
+
+.main-card-header {
+   margin: -1px -1px 0 -1px;
 }
 
 .main-container {
    /* flex-grow: 10; */
    height: 100%;
-   margin-top: -1px;
+   margin: -2px -1px -1px -1px;
    background-color: #3D3C3F;
+   overflow-y: auto;
+}
+
+@media(min-width: 576px) {
+   .main-card {
+      max-width: 576px;
+      max-height: 725px;
+      height: 90%;
+      background-color: transparent;
+      border: none !important;
+   }
+
+   .main-card-header {
+      background: transparent;
+   }
+
+   .main-container  {
+      border-radius: 0 0 15px 15px;
+   }
+}
+
+.loader {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transform: translateY(-5%);
+}
+
+.lds-grid {
+   display: inline-block;
+   position: relative;
+   width: 80px;
+   height: 80px;
+}
+
+.lds-grid div {
+   position: absolute;
+   width: 16px;
+   height: 16px;
+   border-radius: 50%;
+   background: #fed;
+   animation: lds-grid 1.2s linear infinite;
+}
+
+.lds-grid div:nth-child(1) {
+   top: 8px;
+   left: 8px;
+   animation-delay: 0s;
+}
+
+.lds-grid div:nth-child(2) {
+   top: 8px;
+   left: 32px;
+   animation-delay: -0.4s;
+}
+
+.lds-grid div:nth-child(3) {
+   top: 8px;
+   left: 56px;
+   animation-delay: -0.8s;
+}
+
+.lds-grid div:nth-child(4) {
+   top: 32px;
+   left: 8px;
+   animation-delay: -0.4s;
+}
+
+.lds-grid div:nth-child(5) {
+   top: 32px;
+   left: 32px;
+   animation-delay: -0.8s;
+}
+
+.lds-grid div:nth-child(6) {
+   top: 32px;
+   left: 56px;
+   animation-delay: -1.2s;
+}
+
+.lds-grid div:nth-child(7) {
+   top: 56px;
+   left: 8px;
+   animation-delay: -0.8s;
+}
+
+.lds-grid div:nth-child(8) {
+   top: 56px;
+   left: 32px;
+   animation-delay: -1.2s;
+}
+
+.lds-grid div:nth-child(9) {
+   top: 56px;
+   left: 56px;
+   animation-delay: -1.6s;
+}
+
+@keyframes lds-grid {
+
+   0%,
+   100% {
+      opacity: 1;
+   }
+
+   50% {
+      opacity: 0.5;
+   }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+   width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #555;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+   -moz-appearance: textfield;
 }

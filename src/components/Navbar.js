@@ -10,14 +10,14 @@ class Navbar extends Component {
    render() {
       return (
          <>
-         <nav className="main-nav navbar navbar-expand-lg navbar-dark bg-dark">
+         <nav className="main-nav navbar navbar-expand-md navbar-dark bg-dark px-md-3">
             <div className="container-fluid">
                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <FontAwesomeIcon icon={faBars} className='text-light'/>
                </button>
                <a className="navbar-brand" href="#">JohnKot</a>
                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  <ul className="navbar-nav me-auto me-md-0 ms-md-auto mb-2 mb-md-0">
                      <li className="nav-item ms-auto">
                         <div className='indenticon-container px-3'>
                            <small className='text-muted m-0 text-break'>{this.props.accounts[0]}</small>

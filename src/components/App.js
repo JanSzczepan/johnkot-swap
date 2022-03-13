@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import Web3 from 'web3'
 
 import Navbar from './Navbar'
+import Main from './Main'
 
 import Token from '../abis/Token.json'
 import EthSwap from '../abis/EthSwap.json'
 
 import './App.css' 
-import Main from './Main'
 
 class App extends Component {
 
@@ -19,6 +19,7 @@ class App extends Component {
       tokenBalance: '0',
       ethSwap: {},
       ethBalance: '0',
+      rate: 100,
       isLoading: true
     }
   }
@@ -44,10 +45,10 @@ class App extends Component {
     this.setState({ accounts })
 
     const ethBalance = await web3.eth.getBalance(accounts[0])
-    this.setState({ ethBalance })
+    this.setState({ ethBalance: window.web3.utils.fromWei(ethBalance, 'Ether') })
 
     // console.log(this.state.accounts)
-    // console.log(ethBalance)
+    console.log(ethBalance)
 
     const networkId =  await web3.eth.net.getId()
 
@@ -58,7 +59,7 @@ class App extends Component {
       const token = new web3.eth.Contract(Token.abi, tokenData.address)
       this.setState({ token })
       let tokenBalance = await token.methods.balanceOf(this.state.accounts[0]).call()
-      this.setState({ tokenBalance: tokenBalance.toString() })
+      this.setState({ tokenBalance: window.web3.utils.fromWei(tokenBalance.toString(), 'Ether') })
       // console.log(this.state.tokenBalance);
     } else {
       window.alert('Token contract not deployed to detected network.')
@@ -78,42 +79,54 @@ class App extends Component {
     this.setState({ isLoading: false })
   }
 
+  buyTokens = (ethAmount) => {
+    this.setState({ isLoading: true })
+    this.state.ethSwap.methods.buyTokens().send({ value: ethAmount, from: this.state.accounts[0]}).on('transactionHash', (hash) => {
+      this.setState({ isLoading: false })
+      document.location.reload()
+    })
+  }
+
   async componentDidMount() {
     await this.loadWeb3()
     // console.log(window.web3);
     await this.loadBlochchainData()
+    const {ethereum} = window
+    ethereum.on('accountsChanged', function (accounts) {
+      document.location.reload()
+    })
   }
 
   render() {
     let content
     if(this.state.isLoading) {
-      content = <p className='m-0 display-6'>Loading...</p>
+      content = <div className='loader'><div className="loader lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     } else {
-      content = <Main />
+      content = (
+        <Main 
+          ethBalance={this.state.ethBalance} 
+          tokenBalance={this.state.tokenBalance}
+          rate={this.state.rate}
+          buyTokens={this.buyTokens}
+        />
+      )
     }
 
     return (
+      <React.StrictMode>
       <div className='app-container d-flex justify-content-center align-items-center'>
-        {/* <Navbar accounts={this.state.accounts}/>
-        <div className="container-fluid mt-5">
-          <div className="row py-5">
-            <main role="main" className="col-lg-12 d-flex text-center">
-              <div className="content ms-auto me-auto">
-                {content}
-              </div>
-            </main>
-          </div>
-        </div> */}
         <div className="main-card card">
-          <div className="card-header p-0">
+          <div className="main-card-header card-header p-0">
             <Navbar accounts={this.state.accounts}/>
           </div>
           <div className="main-container card-body px-4 px-sm-5 py-5">
-            <Main />
+            
+            {content}
+            
           </div>
         </div>        
       </div>
-      
+      </React.StrictMode>
     );
   }
 }
