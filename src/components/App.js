@@ -80,6 +80,8 @@ class App extends Component {
   }
 
   buyTokens = (ethAmount) => {
+    if(ethAmount === '0') return
+
     this.setState({ isLoading: true })
     this.state.ethSwap.methods.buyTokens().send({ value: ethAmount, from: this.state.accounts[0]}).on('transactionHash', (hash) => {
       this.setState({ isLoading: false })
