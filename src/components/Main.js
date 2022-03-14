@@ -1,21 +1,55 @@
 import React, { Component } from 'react'
 
+import BuyForm from './BuyForm'
+import SellForm from './SellForm'
+
 import './Main.css'
 
-import BuyForm from './BuyForm'
 
 class Main extends Component {
 
-   render() {
+   constructor(props) {
+      super(props)
+      this.state = {
+         currentForm: 'buy'
+      }
+   }
 
-      return (
-         <main className='swap-container'>
+   handleBuySellBtn = (e) => {
+      if(this.state.currentForm === 'buy') {
+         this.setState({ currentForm: 'sell' })
+      } else if(this.state.currentForm === 'sell') {
+         this.setState({ currentForm: 'buy' })
+      }
+   }
+
+   render() {
+      let content
+      if(this.state.currentForm === 'buy') {
+         content = (
             <BuyForm 
                ethBalance={this.props.ethBalance} 
                tokenBalance={this.props.tokenBalance}
                rate={this.props.rate}
-               buyTokens={this.props.buyTokens}   
+               buyTokens={this.props.buyTokens} 
+               changeBuySellForm={this.handleBuySellBtn} 
             />
+         )
+      } else {
+         content = (
+            <SellForm 
+               ethBalance={this.props.ethBalance} 
+               tokenBalance={this.props.tokenBalance}
+               rate={this.props.rate}
+               sellTokens={this.props.sellTokens} 
+               changeBuySellForm={this.handleBuySellBtn}
+            />
+         )
+      }
+
+      return (
+         <main className='swap-container'>
+            {content}
          </main>
       )
    }

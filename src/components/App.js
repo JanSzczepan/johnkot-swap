@@ -89,6 +89,18 @@ class App extends Component {
     })
   }
 
+  sellTokens = (tokenAmount) => {
+    if(tokenAmount === '0') return
+
+    this.setState({ isLoading: true })
+    this.state.token.methods.approve(this.state.ethSwap._address, tokenAmount).send({ from: this.state.accounts[0] }).on('transactionHash', (hash) => {
+      this.state.ethSwap.methods.sellTokens(tokenAmount).send({ from: this.state.accounts[0] }).on('transactionHash', (hash) => {
+        this.setState({ isLoading: false })
+        document.location.reload()
+      })
+    })
+  }
+
   async componentDidMount() {
     await this.loadWeb3()
     // console.log(window.web3);
@@ -110,6 +122,7 @@ class App extends Component {
           tokenBalance={this.state.tokenBalance}
           rate={this.state.rate}
           buyTokens={this.buyTokens}
+          sellTokens={this.sellTokens}
         />
       )
     }

@@ -12,10 +12,10 @@ class Navbar extends Component {
          <>
          <nav className="main-nav navbar navbar-expand-md navbar-dark bg-dark px-md-3">
             <div className="container-fluid">
-               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <button className="navbar-toggler py-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <FontAwesomeIcon icon={faBars} className='text-light'/>
                </button>
-               <a className="navbar-brand" href="/">JohnKot</a>
+               <a className="navbar-brand py-3" href="/">JohnKot</a>
                <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav me-auto me-md-0 ms-md-auto mb-2 mb-md-0">
                      <li className="nav-item ms-auto">

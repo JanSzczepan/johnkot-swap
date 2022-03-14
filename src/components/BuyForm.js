@@ -26,7 +26,7 @@ class BuyForm extends Component {
       e.preventDefault()
       if(!this.input.value || this.input.value === '0') return
 
-      console.log('submit')
+      console.log('submit Buy')
       let ethAmount
       ethAmount = this.input.value.toString()
       ethAmount = window.web3.utils.toWei(ethAmount, 'Ether')
@@ -45,12 +45,12 @@ class BuyForm extends Component {
                         <img src={ETHLogo} className='me-2' alt='Eth logo' height='30px'/>
                         ETH
                      </span>
-                     <input type="number" step="0.000001" className="coin-input form-control bg-transparent text-light" dir="rtl" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" onChange={this.handleInputChange} ref={(input) => this.input = input}/>
+                     <input type="number" step="0.000001" className="coin-input form-control bg-transparent text-light" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" onChange={this.handleInputChange} ref={(input) => this.input = input} placeholder='0'/>
                   </div>
                </div>
             </div>
 
-            <button type='button' className='coin-swap btn d-block my-4 mx-auto'>
+            <button type='button' className='coin-swap btn d-block my-4 mx-auto' onClick={this.props.changeBuySellForm}>
                <FontAwesomeIcon icon={faRightLeft} style={{transform: "rotate(90deg)"}} className='text-light'/>
             </button>
 
@@ -60,7 +60,7 @@ class BuyForm extends Component {
                   <div className="input-group input-group-lg">
                      <span className="coin-box input-group-text bg-transparent text-white" id="inputGroup-sizing-lg">
                         <img src={CATLogo} className='me-2' alt='CAT token logo' height='22px'/>
-                        CAT
+                        KOT
                      </span>  
                      <input type="text" className="coin-input form-control bg-transparent text-light" dir="rtl" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value={this.state.output} disabled/>
                   </div>
@@ -72,8 +72,8 @@ class BuyForm extends Component {
                <p className='text-light m-0 text-end'>{this.props.ethBalance} ETH</p>
             </div>
             <div className='d-flex align-items-center justify-content-between mb-2'>
-               <p className='text-muted m-0'>CAT balance:</p>
-               <p className='text-light m-0 text-end'>{this.props.tokenBalance} CAT</p>
+               <p className='text-muted m-0'>KOT balance:</p>
+               <p className='text-light m-0 text-end'>{this.props.tokenBalance} KOT</p>
             </div>
             <div className='d-flex align-items-center justify-content-between mb-4'>
                <p className='text-muted m-0'>Exchange rate</p>

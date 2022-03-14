@@ -14,7 +14,7 @@
    content: '';
    width: 2px;
    height: 100%;
-   margin-left: 16px;
+   margin-left: 17.5px;
    background-color: #464648;
 }
 
@@ -24,6 +24,7 @@
    border-radius: 0 15px 15px 0 !important;
    outline: none !important;
    box-shadow: none !important;
+   text-align: right;
 }
 
 .coin-input:focus {
@@ -37,4 +38,38 @@
    border: 3px solid #464648;
    border-radius: 50%;
    background-color: #302F32;
+}
+
+
+
+/* WebKit, Edge */
+input::-webkit-input-placeholder {
+   color: #F8F9FA !important;
+}
+
+/* Firefox 4-18 */
+input:-moz-placeholder {
+   color: #F8F9FA !important;
+   opacity: 1 !important;
+}
+
+/* Firefox 19+ */
+input::-moz-placeholder {
+   color: #F8F9FA !important;
+   opacity: 1 !important;
+}
+
+/* IE 10-11 */
+input:-ms-input-placeholder {
+   color: #F8F9FA !important;
+}
+
+/* Edge */
+input::-ms-input-placeholder {
+   color: #F8F9FA !important;
+}
+
+/* MODERN BROWSER */
+input::placeholder {
+   color: #F8F9FA !important;
 }
